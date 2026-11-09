@@ -1,7 +1,7 @@
 # AEM Dispatcher cache leak
 
 > A per-session endpoint, cached by the Dispatcher, served to anonymous callers.
-> Reproducer, local lab, and the sanitized field evidence behind the write-up:
+> Reproducer and local lab behind the write-up:
 > **https://shoo0lin.github.io/posts/dispatcher-cache.html**
 
 Adobe Experience Manager's author tier has an endpoint whose entire job is to answer
@@ -131,22 +131,6 @@ phishing and password spraying, not account takeover. If the same rule had caugh
 or a full profile payload, the identical misconfiguration would be an 8 or a 9. The bug is
 the rule; the severity is the payload.
 
-## Evidence and redaction
-
-`evidence/field-2026-06-30.sanitized.json` is the sanitized field record: five hosts across
-two AMS customers, four dispatcher instances, two AWS regions, cache dates from
-September 2024 to September 2025. Customer names, login identifiers, display names, JCR
-node IDs and dispatcher instance suffixes are replaced; the shapes are untouched.
-
-The unredacted values are in the vendor report.
-They are not published here because the caches were still serving at last verification
-(2026-10-29), and a working list of anonymous identity oracles is the harm this research is
-about. If remediation is confirmed, this file will be updated.
-
-No customer data beyond the fields above was accessed. No authentication was attempted.
-No cache was flushed or poisoned. The probe set was one unauthenticated GET per host and
-per path, with a two-second gap.
-
 ## Layout
 
 ```
@@ -154,7 +138,6 @@ repro.py                          field probe (redacting, rate-limited, --confir
 lab/aem_lab.py                    mock AEM origin + mock Dispatcher, vulnerable|patched
 lab/reproduce.py                  scripted, self-checking reproduction (exit 0 = works)
 tools/render_media.py             renders the terminal screenshots and the clip
-evidence/field-*.sanitized.json   sanitized field captures + provenance
 examples/hosts.example.txt        format for the hosts file
 ```
 
