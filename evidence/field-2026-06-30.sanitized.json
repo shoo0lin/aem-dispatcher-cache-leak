@@ -2,7 +2,6 @@
   "finding": "AEM Dispatcher cache leak of /libs/granite/security/currentuser.json",
   "capture": "field",
   "captured": "2026-06-16 .. 2026-06-30",
-  "reported": "Adobe HackerOne #3813097 (triaged)",
   "redaction": "customer names, login identifiers, display names, JCR node IDs and dispatcher instance suffixes replaced; shapes and booleans preserved",
   "records": [
     {
@@ -24,10 +23,23 @@
         "classification": "AUTH_REQUIRED"
       },
       "neighbour_matrix": {
-        "/libs/granite/security/profile.json": {"status": 200, "classification": "SAML_PAGE", "bytes": 1854},
-        "/libs/granite/security/userinfo.json": {"status": 401, "classification": "AUTH_REQUIRED"},
-        "/libs/cq/security/currentuser.json": {"status": 401, "classification": "AUTH_REQUIRED"},
-        "/content/dam/<site>/metadata.json": {"status": 401, "classification": "AUTH_REQUIRED"}
+        "/libs/granite/security/profile.json": {
+          "status": 200,
+          "classification": "SAML_PAGE",
+          "bytes": 1854
+        },
+        "/libs/granite/security/userinfo.json": {
+          "status": 401,
+          "classification": "AUTH_REQUIRED"
+        },
+        "/libs/cq/security/currentuser.json": {
+          "status": 401,
+          "classification": "AUTH_REQUIRED"
+        },
+        "/content/dam/<site>/metadata.json": {
+          "status": 401,
+          "classification": "AUTH_REQUIRED"
+        }
       }
     },
     {

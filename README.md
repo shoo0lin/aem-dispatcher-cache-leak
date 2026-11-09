@@ -138,7 +138,7 @@ two AMS customers, four dispatcher instances, two AWS regions, cache dates from
 September 2024 to September 2025. Customer names, login identifiers, display names, JCR
 node IDs and dispatcher instance suffixes are replaced; the shapes are untouched.
 
-The unredacted values are in the vendor report (Adobe HackerOne **#3813097**, triaged).
+The unredacted values are in the vendor report.
 They are not published here because the caches were still serving at last verification
 (2026-10-29), and a working list of anonymous identity oracles is the harm this research is
 about. If remediation is confirmed, this file will be updated.
@@ -158,12 +158,8 @@ evidence/field-*.sanitized.json   sanitized field captures + provenance
 examples/hosts.example.txt        format for the hosts file
 ```
 
-## Disclosure status
-
-- Reported to Adobe via HackerOne, **#3813097** — triaged.
-- Published write-up: https://shoo0lin.github.io/posts/dispatcher-cache.html
-- This repository intentionally contains no unredacted customer data and no working host
-  list.
+This repository intentionally contains no unredacted customer data and no working host
+list.
 
 Not affiliated with or endorsed by Adobe. AEM and Adobe Experience Manager are trademarks
 of Adobe Inc. This is independent security research against systems in an authorised
