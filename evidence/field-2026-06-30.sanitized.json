@@ -1,0 +1,102 @@
+{
+  "finding": "AEM Dispatcher cache leak of /libs/granite/security/currentuser.json",
+  "capture": "field",
+  "captured": "2026-06-16 .. 2026-06-30",
+  "reported": "Adobe HackerOne #3813097 (triaged)",
+  "redaction": "customer names, login identifiers, display names, JCR node IDs and dispatcher instance suffixes replaced; shapes and booleans preserved",
+  "records": [
+    {
+      "label": "customer-a / production",
+      "host": "author-<customer-a>-65a.adobecqms.net",
+      "environment": "production",
+      "dispatcher": "dispatcher1uswest2",
+      "last_modified": "Wed, 16 Oct 2024 15:34:28 GMT",
+      "identity": {
+        "type": "user",
+        "authorizableId": "<redacted:email>",
+        "name": "<redacted>",
+        "home": "/home/users/<redacted>",
+        "isImpersonated": false
+      },
+      "cache_miss_control": {
+        "request": "?_=1",
+        "status": 401,
+        "classification": "AUTH_REQUIRED"
+      },
+      "neighbour_matrix": {
+        "/libs/granite/security/profile.json": {"status": 200, "classification": "SAML_PAGE", "bytes": 1854},
+        "/libs/granite/security/userinfo.json": {"status": 401, "classification": "AUTH_REQUIRED"},
+        "/libs/cq/security/currentuser.json": {"status": 401, "classification": "AUTH_REQUIRED"},
+        "/content/dam/<site>/metadata.json": {"status": 401, "classification": "AUTH_REQUIRED"}
+      }
+    },
+    {
+      "label": "customer-b / production",
+      "host": "author-<customer-b>-65-prod.adobecqms.net",
+      "environment": "production",
+      "dispatcher": "dispatcher2useast1",
+      "last_modified": "Wed, 10 Sep 2025 14:22:42 GMT",
+      "identity": {
+        "type": "user",
+        "authorizableId": "<redacted:username>",
+        "name": "<redacted>",
+        "home": "/home/users/<redacted>",
+        "isImpersonated": false
+      },
+      "cache_miss_control": {
+        "request": "?_=1",
+        "status": 302,
+        "classification": "REDIRECT",
+        "location": "https://<redacted>.okta.com/..."
+      }
+    },
+    {
+      "label": "customer-b / pre-production",
+      "host": "author-<customer-b>-65-preprod.adobecqms.net",
+      "environment": "pre-production",
+      "dispatcher": "dispatcher2useast1",
+      "last_modified": "Fri, 26 Sep 2025 13:50:33 GMT",
+      "identity": {
+        "type": "user",
+        "authorizableId": "<redacted:username>",
+        "name": "<redacted>",
+        "home": "/home/users/<redacted>",
+        "isImpersonated": false
+      },
+      "cache_miss_control": null,
+      "control_note": "not captured in this run"
+    },
+    {
+      "label": "customer-b / development",
+      "host": "author-<customer-b>-65-dev.adobecqms.net",
+      "environment": "development",
+      "dispatcher": "dispatcher1useast1",
+      "last_modified": "Fri, 11 Oct 2024 15:24:35 GMT",
+      "identity": {
+        "type": "user",
+        "authorizableId": "<redacted:username>",
+        "name": "<redacted>",
+        "home": "/home/users/<redacted>",
+        "isImpersonated": false
+      },
+      "cache_miss_control": null,
+      "control_note": "not captured in this run"
+    },
+    {
+      "label": "customer-b / QA",
+      "host": "author-<customer-b>-65a-qa.adobecqms.net",
+      "environment": "qa",
+      "dispatcher": "dispatcher1useast1",
+      "last_modified": "Fri, 13 Sep 2024 20:58:26 GMT",
+      "identity": {
+        "type": "user",
+        "authorizableId": "<redacted:username>",
+        "name": "<redacted>",
+        "home": "/home/users/<redacted>",
+        "isImpersonated": false
+      },
+      "cache_miss_control": null,
+      "control_note": "not captured in this run"
+    }
+  ]
+}

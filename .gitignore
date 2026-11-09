@@ -1,0 +1,6 @@
+hosts.txt
+evidence/field-*.json
+!evidence/field-2026-06-30.sanitized.json
+__pycache__/
+*.pyc
+.DS_Store

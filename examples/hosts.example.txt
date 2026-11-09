@@ -1,0 +1,9 @@
+# hosts you are authorised to test, one per line.
+# Lines starting with # are ignored.
+#
+# A bare hostname is fetched over https://
+#   author-<customer>-65a.adobecqms.net
+#
+# A full base URL is also accepted, which is how you point the same checks at
+# the local lab:
+#   http://127.0.0.1:18090
